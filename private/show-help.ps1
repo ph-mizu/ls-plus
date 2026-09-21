@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-PHMZ-NCRL-0.1
+# Copyright (c) 2026 PHMZ
+
 function show-ls-help {
     Write-Output @'
 Usage:
@@ -25,14 +28,19 @@ Type indicators:
   *                      Executable file
 
 Owner permission flags (effective access for the current user):
-  r                      Read
-  w                      Write (also requires the file to not be ReadOnly)
-  x                      Execute
+  r                      Read (requires Synchronize)
+  w                      Write (requires Synchronize and no ReadOnly flag)
+  x                      Execute (requires Synchronize)
   d                      Delete
-  a                      Append
+  a                      Append (requires Synchronize)
   p                      Read or change permissions
   o                      Take ownership
-  s                      Synchronize
+  s                      Synchronize (without it no handle opens)
+
+Permission markers (attached, no spaces, order ^+!):
+  ^                      Hidden or System attribute set
+  +                      Rare rights effectively granted (0x10, 0x40)
+  !                      A non-inherited rule targets the current user
 
 Unmapped rights (see --acl for details):
   0x8 / 0x10             Read/write extended attributes (rarely used)

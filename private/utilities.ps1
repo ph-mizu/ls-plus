@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-PHMZ-NCRL-0.1
+# Copyright (c) 2026 PHMZ
+
 function get-ls-terminal-width {
     try {
         $width = $Host.UI.RawUI.WindowSize.Width

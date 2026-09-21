@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-PHMZ-NCRL-0.1
+# Copyright (c) 2026 PHMZ
+
 function initialize-ls-access-check {
     # Access evaluation is defined as pure managed ACL matching
     # and requires no initialization.
@@ -15,6 +18,8 @@ function new-ls-permissions-object {
         permissions = $false
         ownership   = $false
         synchronize = $false
+        plus        = $false
+        bang        = $false
     }
 }
 
@@ -164,6 +169,69 @@ function test-ls-right {
 }
 
 
+function test-ls-sid-applies-to-me {
+    param(
+        [System.Security.Principal.IdentityReference]
+        $identityReference
+    )
+
+    $info = get-ls-current-sids
+
+    if ($null -eq $info.UserSid) {
+        return $false
+    }
+
+    $sidString = get-ls-rule-sid-string `
+        -identityReference $identityReference
+
+    if ($null -eq $sidString) {
+        return $false
+    }
+
+    return $info.Sids.Contains($sidString)
+}
+
+
+function test-ls-rare-right {
+    param(
+        [System.Security.AccessControl.FileSystemSecurity]
+        $acl
+    )
+
+    # '+' marker: rare rights (WriteExtendedAttributes 0x10,
+    # DeleteSubdirectoriesAndFiles 0x40) are effectively granted.
+    # Read-side shadows (0x8, 0x80) are excluded as pure noise.
+    if (test-ls-right -acl $acl -mask 0x10) {
+        return $true
+    }
+
+    return (test-ls-right -acl $acl -mask 0x40)
+}
+
+
+function test-ls-explicit-rule {
+    param(
+        [System.Security.AccessControl.FileSystemSecurity]
+        $acl
+    )
+
+    # '!' marker: a non-inherited ACE (Allow or Deny) applies to
+    # the current user.
+    foreach ($rule in @($acl.Access)) {
+        if ($rule.IsInherited) {
+            continue
+        }
+
+        if (test-ls-sid-applies-to-me `
+                -identityReference $rule.IdentityReference) {
+            return $true
+        }
+    }
+
+    return $false
+}
+
+
 function get-ls-owner-permissions {
     param(
         [Parameter(Mandatory = $true)]
@@ -209,6 +277,23 @@ function get-ls-owner-permissions {
         ) {
             $permissions.write = $false
         }
+
+        # Data-handle operations require Synchronize: without it no
+        # handle opens, so r/w/x/a stay dark however the data bits
+        # read. Control operations (p/o) use the security API path
+        # and are unaffected.
+        if (-not $permissions.synchronize) {
+            $permissions.read = $false
+            $permissions.write = $false
+            $permissions.execute = $false
+            $permissions.append = $false
+        }
+
+        # '+' suffix: rare rights are effectively granted.
+        $permissions.plus = test-ls-rare-right -acl $acl
+
+        # '!' suffix: a hand-made explicit rule targets the user.
+        $permissions.bang = test-ls-explicit-rule -acl $acl
 
         # Owner implicitly holds READ_CONTROL | WRITE_DAC.
         try {
@@ -312,5 +397,23 @@ function get-ls-permission-string {
         $synchronize = '-'
     }
 
-    return "$type$read$write$execute$delete$append$permissionControl$ownership$synchronize"
+    $base = "$type$read$write$execute$delete$append$permissionControl$ownership$synchronize"
+
+    # Marker suffixes in fixed order ^+!: hidden attribute,
+    # rare rights, explicit rule. Tightly attached, no spaces.
+    $suffix = ''
+
+    if (test-ls-hidden -item $item) {
+        $suffix += '^'
+    }
+
+    if ($permissions.plus) {
+        $suffix += '+'
+    }
+
+    if ($permissions.bang) {
+        $suffix += '!'
+    }
+
+    return $base + $suffix
 }

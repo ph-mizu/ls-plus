@@ -2,8 +2,22 @@
 
 All notable changes to ls-plus are documented here, newest first.
 Versioning follows SemVer; ModuleVersion in ls-plus.psd1 is the
-source of truth. Move an entry from Unreleased to a version
-section when its release commit lands.
+source of truth.
+
+## [0.2.0] - 2026-09-22
+
+### Added
+
+- Permission markers attached without spaces in ^+! order:
+  ^ for Hidden or System attributes, + for effectively granted
+  rare rights (0x10, 0x40), ! for non-inherited rules targeting
+  the current user.
+- Data-handle flags (rwxa) require Synchronize.
+
+### Changed
+
+- Deny-restricted entries now show dark rwxa instead of data
+  bits that could never open a handle.
 
 ## [0.1.0]
 
