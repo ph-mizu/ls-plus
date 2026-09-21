@@ -1,0 +1,882 @@
+PHMZ NON-COMMERCIAL RECIPROCAL LICENSE
+Version 0.1
+
+Copyright (c) 2026 PHMZ
+
+SPDX-License-Identifier: LicenseRef-PHMZ-NCRL-0.1
+
+IMPORTANT NOTICE
+
+This software is licensed under the PHMZ Non-Commercial Reciprocal
+License, Version 0.1.
+
+This license is a custom source-available, non-commercial,
+strong reciprocal license.
+
+It is not an OSI-approved Open Source license.
+
+Commercial use is prohibited unless expressly authorized
+by a separate written agreement from the copyright holder.
+
+This License applies to the Software and all versions,
+revisions, historical snapshots, and source-code states
+contained in the official repository, unless a particular
+version was previously distributed under a separate written
+license or express written permission.
+
+The absence of a license file, copyright notice, or SPDX identifier
+in an earlier commit does not constitute permission to use,
+modify, distribute, sublicense, or commercially exploit
+that version of the Software.
+
+For commercial licensing inquiries, written exceptions,
+or confidentiality arrangements, please contact:
+
+mizu.github@gmail.com
+
+---
+
+1. DEFINITIONS
+
+1.1. "Licensor"
+
+"Licensor" means PHMZ, the copyright holder, or any person or
+entity expressly authorized by PHMZ to grant rights under this
+License.
+
+1.2. "Software"
+
+"Software" means the software, source code, object code, binaries,
+documentation, configuration files, build scripts, assets, and
+other materials distributed by the Licensor under this License.
+
+1.3. "Source Code"
+
+"Source Code" means the preferred form of the Software for making
+modifications, including all source files, interface definitions,
+build scripts, configuration files, dependency declarations,
+generation scripts, and other materials reasonably necessary to
+study, modify, build, test, and reproduce the Software.
+
+Source Code must not be intentionally withheld, obfuscated, or
+provided only in a form that materially prevents modification.
+
+1.4. "Modified Work"
+
+"Modified Work" means any work based on, derived from, or
+containing the Software or any substantial portion of the Software,
+where one or more files, functions, modules, components, interfaces,
+behaviors, or other substantial elements have been modified,
+translated, extended, adapted, or otherwise changed.
+
+1.5. "Combined Product"
+
+"Combined Product" means any product, application, service,
+distribution, system, appliance, package, platform, or other
+work that:
+
+(a) incorporates the Software or a substantial portion of it;
+
+(b) links to, embeds, bundles, integrates, or combines the Software
+    with other software;
+
+(c) modifies or extends the Software;
+
+(d) uses the Software as a substantial functional component;
+
+(e) is designed, marketed, distributed, or supplied as a unified
+    product together with the Software; or
+
+(f) would reasonably be understood by a recipient as a product
+    incorporating or based upon the Software.
+
+A Combined Product does not automatically include an independent
+and separate work that is merely distributed alongside the Software
+without being combined with it, provided that the separate work does
+not incorporate, depend upon, extend, or form an integrated part of
+the Software.
+
+1.6. "Distribute"
+
+"Distribute" means to make the Software, a Modified Work, or a
+Combined Product available to another person or entity, including
+by sale, transfer, download, hosting, delivery, publication,
+deployment, installation, provision of access, or any other method.
+
+1.7. "Commercial Use"
+
+"Commercial Use" means any use, activity, transaction, arrangement,
+or deployment involving the Software, a Modified Work, or a
+Combined Product that directly or indirectly provides, enables,
+supports, promotes, or contributes to a monetary or non-monetary
+benefit to the user or any third party.
+
+Commercial Use includes, without limitation:
+
+(a) selling or reselling;
+
+(b) licensing, sublicensing, leasing, renting, or transferring
+    rights for consideration;
+
+(c) providing paid or revenue-generating services;
+
+(d) maintenance, repair, troubleshooting, or technical support
+    provided for compensation or commercial advantage;
+
+(e) upgrades, updates, patches, customization, integration,
+    migration, or implementation provided for compensation or
+    commercial advantage;
+
+(f) reproduction, packaging, bundling, or distribution as part of
+    a commercial product or service;
+
+(g) advertising, marketing, promotion, sponsorship, or monetized
+    content involving the Software;
+
+(h) installation, deployment, configuration, or operation provided
+    for compensation or commercial advantage;
+
+(i) hosting, Software-as-a-Service, Platform-as-a-Service,
+    Infrastructure-as-a-Service, managed services, or remote access;
+
+(j) using the Software within an organization, company, business,
+    institution, or other entity where the use directly or
+    indirectly contributes to revenue, cost reduction, operational
+    advantage, customer acquisition, competitive advantage,
+    business continuity, or any other economic benefit;
+
+(k) using the Software to create, operate, support, or improve a
+    commercial product, commercial service, or commercial activity;
+
+(l) receiving money, goods, services, credits, benefits, discounts,
+    consideration, or any other thing of economic value; or
+
+(m) enabling, assisting, facilitating, or causing a third party to
+    obtain any of the benefits described above.
+
+Commercial Use may exist even if:
+
+(a) the Software itself is provided without charge;
+
+(b) no payment is made directly to the user;
+
+(c) the benefit is received indirectly;
+
+(d) the Software is only one component of a larger product or
+    service; or
+
+(e) the activity is described as free, open, educational, charitable,
+    experimental, or internal.
+
+1.8. "Non-Commercial Use"
+
+"Non-Commercial Use" means use that does not constitute Commercial
+Use under Section 1.7.
+
+Examples may include personal use, private study, independent
+research, experimentation, hobby projects, and non-commercial
+educational activities, provided that the activity does not
+otherwise generate or facilitate a direct or indirect commercial
+benefit.
+
+1.9. "Educational Activity"
+
+"Educational Activity" means teaching, learning, classroom
+instruction, academic demonstration, tutorial creation, technical
+documentation, or educational presentation.
+
+An Educational Activity does not constitute Commercial Use solely
+because the educational institution, instructor, platform, or
+course provider charges tuition, admission, subscription, or other
+fees.
+
+This exception does not apply where the Software is used to provide
+paid installation, consulting, maintenance, customization, hosting,
+support, or another commercial service disguised as education.
+
+1.10. "Corresponding Source"
+
+"Corresponding Source" means the complete Source Code of the
+Software, Modified Work, or Combined Product that is necessary for
+a recipient to study, modify, build, test, and reproduce the
+distributed work.
+
+---
+
+2. GRANT OF NON-COMMERCIAL RIGHTS
+
+Subject to the terms and conditions of this License, the Licensor
+grants you a limited, worldwide, royalty-free, non-exclusive,
+non-transferable, and non-sublicensable license to:
+
+(a) use the Software for Non-Commercial Use;
+
+(b) study the Software;
+
+(c) copy the Software;
+
+(d) modify the Software;
+
+(e) create Modified Works;
+
+(f) create Combined Products; and
+
+(g) Distribute the Software, Modified Works, and Combined Products
+    solely for Non-Commercial Use and subject to this License.
+
+This license grant does not authorize Commercial Use.
+
+No rights are granted beyond those expressly stated in this License.
+
+---
+
+3. COMMERCIAL USE IS PROHIBITED
+
+3.1. Default Prohibition
+
+You must not engage in Commercial Use of the Software, any
+Modified Work, or any Combined Product unless you have obtained
+separate written permission from the Licensor.
+
+3.2. Required Commercial Authorization
+
+Commercial Use requires a separate written commercial license
+agreement expressly signed or otherwise expressly confirmed in
+writing by the Licensor.
+
+An informal statement, public discussion, issue comment, pull
+request, social media post, or implied permission does not constitute
+commercial authorization unless the Licensor clearly confirms that
+it is intended to grant such authorization.
+
+3.3. Contact for Commercial Licensing
+
+Commercial licensing inquiries must be directed to:
+
+mizu.github@gmail.com
+
+The Licensor may approve, reject, limit, condition, or separately
+price any commercial license at its sole discretion.
+
+---
+
+4. PERMITTED NON-COMMERCIAL DISTRIBUTION
+
+You may Distribute verbatim copies of the Software for Non-Commercial
+Use, provided that you:
+
+(a) include a complete copy of this License;
+
+(b) retain all copyright, attribution, disclaimer, and license
+    notices;
+
+(c) clearly identify the Software as being licensed under this
+    License;
+
+(d) do not imply endorsement, sponsorship, or affiliation with
+    PHMZ; and
+
+(e) do not impose additional restrictions on the rights granted by
+    this License.
+
+You may not charge a fee or obtain any direct or indirect benefit
+for the distribution itself, except for reasonable and documented
+costs strictly necessary to transfer physical or electronic copies,
+provided that the transaction does not otherwise constitute
+Commercial Use.
+
+---
+
+5. MODIFICATION REQUIREMENTS
+
+You may create and use Modified Works for Non-Commercial Use.
+
+For every Modified Work that you Distribute, you must:
+
+(a) clearly identify that the work has been modified;
+
+(b) include the date and a reasonably descriptive summary of
+    significant modifications;
+
+(c) retain all existing copyright and license notices;
+
+(d) provide the complete Corresponding Source;
+
+(e) license the Modified Work as a whole under this License; and
+
+(f) provide every recipient with a copy of this License.
+
+You must not remove, conceal, alter, or falsify notices identifying
+the original author, copyright holder, or applicable license.
+
+---
+
+6. COPyleft AND SAME-LICENSE REQUIREMENT
+
+6.1. General Rule
+
+Any Modified Work, Derivative Work, or Combined Product that is
+based on, incorporates, contains, links to, embeds, extends, adapts,
+or otherwise materially uses the Software must be licensed as a
+whole under this License when Distributed.
+
+6.2. Same License
+
+Every recipient of a Modified Work, Derivative Work, or Combined
+Product must receive the same rights and obligations under this
+License.
+
+You must not relicense, dual-license, sublicense, or distribute any
+such work under terms that are inconsistent with, weaker than, or
+different from this License, unless expressly authorized in a
+separate written agreement by the Licensor.
+
+6.3. Entire Combined Product
+
+The entire Combined Product, including all components that form part
+of the integrated product, must be made available under this License.
+
+This requirement applies to, without limitation:
+
+(a) original components created for the Combined Product;
+
+(b) modified components;
+
+(c) extensions and plugins;
+
+(d) linked and embedded components;
+
+(e) application code;
+
+(f) libraries and modules;
+
+(g) scripts and configuration files;
+
+(h) build and deployment materials;
+
+(i) user-interface components;
+
+(j) service-side and client-side components; and
+
+(k) any other component that forms an integrated or functional part
+    of the Combined Product.
+
+6.4. No Proprietary Parts
+
+You must not distribute a Combined Product in which any component
+covered by Section 6 is:
+
+(a) closed source;
+
+(b) distributed under proprietary terms;
+
+(c) distributed under a license that prohibits source-code access,
+    modification, or redistribution;
+
+(d) subject to technical restrictions that prevent lawful study,
+    modification, rebuilding, or redistribution; or
+
+(e) intentionally separated or isolated for the purpose of avoiding
+    the obligations of this License.
+
+6.5. Corresponding Source
+
+For every Modified Work, Derivative Work, and Combined Product that
+is Distributed, you must provide the complete Corresponding Source
+for the entire covered work.
+
+The Corresponding Source must be sufficient for recipients to study,
+modify, build, test, and reproduce the complete covered work.
+
+6.6. License Notice
+
+Every Distributed Modified Work, Derivative Work, and Combined
+Product must:
+
+(a) include a complete copy of this License;
+
+(b) retain all copyright and license notices;
+
+(c) clearly state that the work is based on Software licensed by PHMZ;
+
+(d) identify significant modifications; and
+
+(e) state that the complete work is distributed under this License.
+
+6.7. No Circumvention
+
+You must not avoid the requirements of this Section by:
+
+(a) placing covered components in separate packages;
+
+(b) distributing components through separate repositories;
+
+(c) using proprietary wrappers or loaders;
+
+(d) replacing direct integration with an equivalent technical
+    mechanism intended to evade this License;
+
+(e) claiming that a unified product consists of unrelated works; or
+
+(f) using any other arrangement whose primary purpose is to avoid
+    the same-license and source-disclosure requirements.
+
+6.8. Independent and Merely Accompanying Works
+
+A work is not subject to the obligations of this Section merely
+because it is:
+
+(a) distributed in the same archive, installer, repository,
+    download, storage medium, or distribution channel;
+
+(b) listed in the same project, organization, package index,
+    marketplace, or documentation;
+
+(c) distributed alongside the Software;
+
+(d) installed on the same device or system; or
+
+(e) used by the same person or organization.
+
+A work is subject to the obligations of this Section if it is
+materially based on, derived from, incorporates, embeds, links to,
+extends, adapts, depends upon, or forms an integrated or functional
+part of the Software or a Combined Product.
+
+The separation of a component into a different file, module,
+package, repository, process, service, container, executable,
+repository, or distribution channel does not by itself establish
+that the component is independent.
+
+A genuinely independent work that does not incorporate, depend upon,
+extend, or form an integrated or functional part of the Software is
+not automatically subject to this Section solely because it is
+distributed alongside the Software.
+
+6.9. Written Exceptions
+
+The Licensor may grant a written exception to any requirement in
+this Section.
+
+No exception is valid unless expressly granted in writing by the
+Licensor.
+
+---
+
+7. SOURCE CODE AVAILABILITY
+
+7.1. Distribution of Source Code
+
+When Distributing the Software, a Modified Work, or a Combined
+Product, you must provide the complete Corresponding Source to
+every recipient at no additional charge beyond reasonable transfer
+costs.
+
+7.2. Distribution of Object Code
+
+You may not Distribute binaries, executable files, containers,
+compiled packages, firmware, or other object-code forms without
+also providing the complete Corresponding Source.
+
+7.3. Build and Reproduction Information
+
+The Corresponding Source must include, where applicable:
+
+(a) build scripts;
+
+(b) dependency declarations;
+
+(c) configuration files;
+
+(d) code-generation tools or scripts;
+
+(e) installation and deployment instructions;
+
+(f) test instructions;
+
+(g) interface definitions; and
+
+(h) other materials reasonably necessary to reproduce the distributed
+    work.
+
+7.4. Availability Period
+
+The Corresponding Source must remain available for as long as you
+Distribute the relevant Software, Modified Work, or Combined
+Product, and for a reasonable period afterward sufficient for
+recipients to obtain and use their rights under this License.
+
+---
+
+8. NON-COMMERCIAL ORGANIZATIONAL USE
+
+An organization, company, institution, or other legal entity may
+use the Software only if the use is genuinely Non-Commercial and
+does not directly or indirectly provide economic, operational,
+competitive, financial, or other material benefit to that entity or
+to a third party.
+
+Organizational status alone does not grant permission for Commercial
+Use.
+
+If an organization is uncertain whether its use constitutes
+Commercial Use, it must contact the Licensor before using the
+Software.
+
+---
+
+9. EDUCATIONAL EXCEPTION
+
+Educational Activities are permitted, including Educational
+Activities conducted by commercial schools, universities, training
+providers, tutorial creators, and educational platforms.
+
+This exception applies only to the educational purpose itself.
+
+It does not authorize:
+
+(a) commercial deployment;
+
+(b) paid installation or configuration;
+
+(c) paid support or maintenance;
+
+(d) paid consulting or customization;
+
+(e) commercial hosting or managed services;
+
+(f) integration into a commercial product; or
+
+(g) any other activity that constitutes Commercial Use.
+
+---
+
+10. CONFIDENTIALITY, TRADE SECRETS, AND WRITTEN EXCEPTIONS
+
+10.1. No Automatic Confidentiality Exception
+
+This License does not automatically permit you to withhold Source
+Code because of trade secrets, security concerns, contractual
+obligations, privacy concerns, export restrictions, or other
+confidentiality considerations.
+
+10.2. Written Exception
+
+If disclosure of any part of the Corresponding Source creates a
+legitimate confidentiality, security, legal, or trade-secret concern,
+you may contact the Licensor to request a written exception,
+alternative disclosure arrangement, or separate license.
+
+10.3. No Implied Exception
+
+A request, discussion, negotiation, or pending application does not
+create an exception.
+
+An exception is valid only when expressly granted in writing by the
+Licensor and only to the extent stated in that written authorization.
+
+10.4. Separate Agreement
+
+The Licensor may require a separate agreement governing:
+
+(a) confidential materials;
+
+(b) delayed disclosure;
+
+(c) source-code escrow;
+
+(d) restricted access;
+
+(e) alternative source-code delivery;
+
+(f) security-sensitive components; or
+
+(g) commercial or institutional use.
+
+---
+
+11. ATTRIBUTION AND NOTICES
+
+You must:
+
+(a) preserve all existing copyright notices;
+
+(b) preserve all license notices;
+
+(c) include a copy of this License with every distribution;
+
+(d) identify substantial modifications;
+
+(e) identify the original Software when distributing a Modified Work
+    or Combined Product; and
+
+(f) avoid suggesting that PHMZ endorses, certifies, sponsors, or
+    supports your Modified Work or Combined Product.
+
+You may add your own copyright notices for your original
+contributions, provided that such notices do not remove or weaken
+the rights and obligations under this License.
+
+---
+
+12. TRADEMARKS AND NAMES
+
+This License does not grant permission to use the names, trademarks,
+service marks, logos, trade names, or branding of PHMZ except as
+reasonably necessary to identify the origin of the Software and
+describe compliance with this License.
+
+You must not use the name "PHMZ" or any confusingly similar name to
+suggest endorsement, sponsorship, certification, or official
+association without separate written permission.
+
+---
+
+13. PATENT RIGHTS RESERVED
+
+All patent rights, patent applications, inventions, and related
+intellectual property rights are reserved by the Licensor.
+
+Except where expressly stated in a separate written agreement, this
+License grants no express or implied patent license.
+
+You receive no permission under this License to practice, use,
+manufacture, sell, offer for sale, import, or otherwise exploit any
+patent claim that may be infringed by the Software, a Modified Work,
+or a Combined Product.
+
+Nothing in this Section is intended to limit rights that cannot
+lawfully be excluded under applicable law.
+
+---
+
+14. NO ADDITIONAL RESTRICTIONS
+
+You must not impose additional legal or technical restrictions on
+the exercise of rights granted by this License.
+
+In particular, you must not:
+
+(a) prohibit recipients from obtaining the Corresponding Source;
+
+(b) prohibit recipients from modifying the Software;
+
+(c) prohibit recipients from Distributing the Software for
+    permitted Non-Commercial Use;
+
+(d) impose a closed-source requirement on any part of a Combined
+    Product;
+
+(e) impose a further license fee for rights granted by this License;
+    or
+
+(f) use digital restrictions management or technical measures to
+    prevent lawful exercise of rights under this License.
+
+This Section does not prevent a separate written commercial license
+or written exception expressly granted by the Licensor.
+
+---
+
+15. TERMINATION
+
+Your rights under this License terminate automatically if you:
+
+(a) engage in Commercial Use without written authorization;
+
+(b) fail to comply with the source-code requirements;
+
+(c) Distribute a Combined Product without licensing the entire
+    Combined Product under this License;
+
+(d) remove or falsify required notices;
+
+(e) impose prohibited additional restrictions; or
+
+(f) otherwise materially breach this License.
+
+Upon termination, you must immediately stop all use and distribution
+of the Software, Modified Works, and Combined Products, except that
+recipients who are not themselves in violation of this License may
+retain rights validly granted to them under this License.
+
+If you permanently correct the violation within thirty (30) days
+after receiving written notice from the Licensor, your rights may
+be reinstated at the Licensor's discretion, or automatically if the
+Licensor expressly confirms reinstatement in writing.
+
+Termination does not limit any other legal rights or remedies of
+the Licensor.
+
+---
+
+16. NO WARRANTY
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE,
+NON-INFRINGEMENT, ACCURACY, SECURITY, OR reliability.
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE LICENSOR
+SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, CONSEQUENTIAL, OR OTHER DAMAGES ARISING FROM OR RELATED
+TO THE SOFTWARE OR THE EXERCISE OF RIGHTS UNDER THIS LICENSE,
+REGARDLESS OF THE THEORY OF LIABILITY.
+
+---
+
+17. LIMITATION OF LIABILITY
+
+To the maximum extent permitted by applicable law, the Licensor
+shall not be liable for:
+
+(a) loss of data;
+
+(b) loss of profits;
+
+(c) business interruption;
+
+(d) security incidents;
+
+(e) system damage;
+
+(f) incompatibility;
+
+(g) failure to meet requirements;
+
+(h) loss of confidentiality;
+
+(i) claims arising from third-party components; or
+
+(j) any other loss resulting from use, modification, distribution,
+    or inability to use the Software.
+
+Some jurisdictions do not permit certain exclusions or limitations.
+In such jurisdictions, the exclusions and limitations apply only to
+the maximum extent permitted by law.
+
+---
+
+18. Historical Versions and Repository History
+
+18.1. Scope
+
+Unless expressly stated otherwise in a separate written agreement,
+this License applies to the Software in its entirety, including
+all versions, revisions, historical snapshots, and source-code
+states contained in the official repository.
+
+18.2. No Implied Permission
+
+The absence of a license file, copyright notice, or SPDX identifier
+in any earlier revision, commit, branch, tag, or historical snapshot
+does not constitute a grant of permission to copy, modify, distribute,
+sublicense, commercially use, or otherwise exploit the Software.
+
+18.3. Prior Written Permissions
+
+Any version or portion of the Software that was previously distributed
+under a separate written license or express written permission remains
+subject to that prior grant to the extent required by applicable law.
+
+18.4. Clarification of Rights
+
+This Section clarifies the Licensor's intended licensing scope and
+does not revoke or invalidate rights that were expressly granted
+to a recipient under a prior written agreement.
+
+---
+
+19. THIRD-PARTY COMPONENTS
+
+The Software may include or depend upon third-party software,
+libraries, assets, or other materials subject to separate terms.
+
+Those third-party materials are not relicensed by this License
+unless expressly stated.
+
+You are responsible for complying with all applicable third-party
+license obligations.
+
+Nothing in this License grants permission to remove, override, or
+violate third-party license requirements.
+
+---
+
+20. NO OBLIGATION TO PROVIDE SUPPORT
+
+The Licensor has no obligation to provide:
+
+(a) technical support;
+
+(b) maintenance;
+
+(c) updates;
+
+(d) security fixes;
+
+(e) compatibility fixes;
+
+(f) documentation;
+
+(g) hosting; or
+
+(h) any other service.
+
+Any such service must be separately agreed in writing.
+
+---
+
+21. ACCEPTANCE
+
+By exercising any rights granted by this License, you indicate that
+you accept and agree to be bound by its terms.
+
+If you do not agree to these terms, you may not use, modify, copy,
+or Distribute the Software.
+
+---
+
+22. RESERVATION OF RIGHTS
+
+All rights not expressly granted under this License are reserved by
+the Licensor.
+
+This License does not transfer ownership of the Software or any
+intellectual property rights to you.
+
+---
+
+23. SEVERABILITY
+
+If any provision of this License is held to be invalid,
+unenforceable, or unlawful, that provision shall be modified to the
+minimum extent necessary to make it enforceable, if permitted by
+law.
+
+The remaining provisions shall remain in full force and effect.
+
+---
+
+24. ENTIRE AGREEMENT
+
+This License constitutes the entire agreement concerning the rights
+granted to the Software under this License, except for separate
+written agreements expressly entered into by the Licensor.
+
+Any amendment, exception, waiver, or additional permission must be
+in writing and expressly authorized by the Licensor.
+
+---
+
+25. CONTACT
+
+For questions, commercial licensing, written exceptions,
+confidentiality arrangements, or other permissions, contact:
+
+PHMZ
+mizu.github@gmail.com
+
+---
+
+END OF LICENSE
