@@ -1,0 +1,5 @@
+# Enforce LF everywhere; PowerShell parses LF on all platforms.
+* text=auto eol=lf
+*.ps1 text eol=lf
+*.psd1 text eol=lf
+*.psm1 text eol=lf
