@@ -1,0 +1,1 @@
+ReadOnly-attribute sample file. Setup script sets ReadOnly, expect w dark while readable.

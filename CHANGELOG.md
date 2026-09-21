@@ -4,6 +4,13 @@ All notable changes to ls-plus are documented here, newest first.
 Versioning follows SemVer; ModuleVersion in ls-plus.psd1 is the
 source of truth.
 
+## [0.2.1] - 2026-09-22
+
+### Added
+
+- samples/ permission fixtures with reset script.
+- Project README.
+
 ## [0.2.0] - 2026-09-22
 
 ### Added

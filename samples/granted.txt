@@ -1,0 +1,1 @@
+Explicit-grant sample file. Setup script grants R explicitly, expect ~ marker.

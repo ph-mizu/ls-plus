@@ -1,0 +1,3 @@
+# Windows reparse points cannot be committed. The Reset script recreates them.
+samples/app-link/
+samples/file-link.txt
