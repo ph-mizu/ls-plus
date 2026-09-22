@@ -37,9 +37,9 @@ Owner permission flags (effective access for the current user):
   o                      Take ownership
   s                      Synchronize (without it no handle opens)
 
-Permission markers (attached, no spaces, order ^+!):
+Permission markers (attached, no spaces, order +^!):
   ^                      Hidden or System attribute set
-  +                      Rare rights effectively granted (0x10, 0x40)
+  +                      Rights deviate from standard bundles (targeting Deny, incomplete bundle, rare 0x40)
   !                      A non-inherited rule targets the current user
 
 Unmapped rights (see --acl for details):

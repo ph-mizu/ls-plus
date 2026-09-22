@@ -102,6 +102,54 @@ function get-ls-rule-sid-string {
 }
 
 
+function expand-ls-generic-rights {
+    param(
+        [int]
+        $rights
+    )
+
+    # Generic rights are stored unexpanded on directory ACEs
+    # (e.g. 0x10000000). The generic-to-specific mapping is
+    # identical for files and directories (ListDirectory shares
+    # its bit with ReadData, Traverse with Execute), so one
+    # table covers both. Accumulation uses long to keep the
+    # high generic bits intact.
+    $expanded = [long]$rights
+
+    if (($expanded -band 0x80000000L) -ne 0) {
+        $expanded = $expanded -bor 0x120089L
+    }
+
+    if (($expanded -band 0x40000000L) -ne 0) {
+        $expanded = $expanded -bor 0x120116L
+    }
+
+    if (($expanded -band 0x20000000L) -ne 0) {
+        $expanded = $expanded -bor 0x1200A0L
+    }
+
+    if (($expanded -band 0x10000000L) -ne 0) {
+        $expanded = $expanded -bor 0x1F01FFL
+    }
+
+    return $expanded
+}
+
+
+function test-ls-inherit-only {
+    param(
+        [System.Security.AccessControl.AuthorizationRule]
+        $rule
+    )
+
+    # InheritOnly ACEs target child objects, never this object.
+    return (
+        ($rule.PropagationFlags -band
+         [System.Security.AccessControl.PropagationFlags]::InheritOnly) -ne 0
+    )
+}
+
+
 function test-ls-right {
     param(
         [System.Security.AccessControl.FileSystemSecurity]
@@ -130,6 +178,10 @@ function test-ls-right {
             continue
         }
 
+        if (test-ls-inherit-only -rule $rule) {
+            continue
+        }
+
         $sidString = get-ls-rule-sid-string -identityReference $rule.IdentityReference
 
         if ($null -eq $sidString) {
@@ -140,7 +192,10 @@ function test-ls-right {
             continue
         }
 
-        if (([int]$rule.FileSystemRights -band $mask) -ne 0) {
+        $effective = expand-ls-generic-rights `
+            -rights ([int]$rule.FileSystemRights)
+
+        if (($effective -band $mask) -ne 0) {
             return $false
         }
     }
@@ -150,6 +205,10 @@ function test-ls-right {
             continue
         }
 
+        if (test-ls-inherit-only -rule $rule) {
+            continue
+        }
+
         $sidString = get-ls-rule-sid-string -identityReference $rule.IdentityReference
 
         if ($null -eq $sidString) {
@@ -160,7 +219,10 @@ function test-ls-right {
             continue
         }
 
-        if (([int]$rule.FileSystemRights -band $mask) -ne 0) {
+        $effective = expand-ls-generic-rights `
+            -rights ([int]$rule.FileSystemRights)
+
+        if (($effective -band $mask) -ne 0) {
             return $true
         }
     }
@@ -192,17 +254,54 @@ function test-ls-sid-applies-to-me {
 }
 
 
-function test-ls-rare-right {
+function test-ls-anomaly {
     param(
         [System.Security.AccessControl.FileSystemSecurity]
         $acl
     )
 
-    # '+' marker: rare rights (WriteExtendedAttributes 0x10,
-    # DeleteSubdirectoriesAndFiles 0x40) are effectively granted.
-    # Read-side shadows (0x8, 0x80) are excluded as pure noise.
-    if (test-ls-right -acl $acl -mask 0x10) {
-        return $true
+    # '+' marker: the effective rights deviate from every standard
+    # bundle. A Deny targeting the current user is itself anomalous,
+    # as allow-based DACLs rarely contain one. A companion bit is
+    # defined as present exactly when its carrier is present:
+    # WriteEA 0x10 and WriteAttrs 0x100 accompany WriteData 0x2;
+    # ReadEA 0x8 and ReadAttrs 0x80 accompany ReadData 0x1. A carrier
+    # without its companion forms an incomplete bundle.
+    # DeleteSubdirectoriesAndFiles 0x40 has no standard carrier
+    # outside FullControl, so any effective grant is anomalous.
+    foreach ($rule in @($acl.Access)) {
+        if ($rule.AccessControlType -ne [System.Security.AccessControl.AccessControlType]::Deny) {
+            continue
+        }
+
+        if (test-ls-inherit-only -rule $rule) {
+            continue
+        }
+
+        if (test-ls-sid-applies-to-me `
+                -identityReference $rule.IdentityReference) {
+            return $true
+        }
+    }
+
+    if (test-ls-right -acl $acl -mask 0x2) {
+        if (-not (test-ls-right -acl $acl -mask 0x10)) {
+            return $true
+        }
+
+        if (-not (test-ls-right -acl $acl -mask 0x100)) {
+            return $true
+        }
+    }
+
+    if (test-ls-right -acl $acl -mask 0x1) {
+        if (-not (test-ls-right -acl $acl -mask 0x8)) {
+            return $true
+        }
+
+        if (-not (test-ls-right -acl $acl -mask 0x80)) {
+            return $true
+        }
     }
 
     return (test-ls-right -acl $acl -mask 0x40)
@@ -219,6 +318,10 @@ function test-ls-explicit-rule {
     # the current user.
     foreach ($rule in @($acl.Access)) {
         if ($rule.IsInherited) {
+            continue
+        }
+
+        if (test-ls-inherit-only -rule $rule) {
             continue
         }
 
@@ -289,8 +392,8 @@ function get-ls-owner-permissions {
             $permissions.append = $false
         }
 
-        # '+' suffix: rare rights are effectively granted.
-        $permissions.plus = test-ls-rare-right -acl $acl
+        # '+' suffix: rights deviate from standard bundles.
+        $permissions.plus = test-ls-anomaly -acl $acl
 
         # '!' suffix: a hand-made explicit rule targets the user.
         $permissions.bang = test-ls-explicit-rule -acl $acl
@@ -399,16 +502,16 @@ function get-ls-permission-string {
 
     $base = "$type$read$write$execute$delete$append$permissionControl$ownership$synchronize"
 
-    # Marker suffixes in fixed order ^+!: hidden attribute,
-    # rare rights, explicit rule. Tightly attached, no spaces.
+    # Marker suffixes in fixed order +^!: rare rights, hidden
+    # attribute, explicit rule. Tightly attached, no spaces.
     $suffix = ''
-
-    if (test-ls-hidden -item $item) {
-        $suffix += '^'
-    }
 
     if ($permissions.plus) {
         $suffix += '+'
+    }
+
+    if (test-ls-hidden -item $item) {
+        $suffix += '^'
     }
 
     if ($permissions.bang) {

@@ -4,6 +4,19 @@ All notable changes to ls-plus are documented here, newest first.
 Versioning follows SemVer; ModuleVersion in ls-plus.psd1 is the
 source of truth.
 
+## [0.2.2] - 2026-09-23
+
+### Changed
+
+- `+` marker redefined as bundle-deviation signal: targeting
+  Deny, incomplete bundle, or effective 0x40 grant. Marker
+  order is now `+^!`.
+- Data-handle flags (rwxa) require Synchronize; generic rights
+  expand to specific rights and inherit-only ACEs are skipped.
+- samples/ fixtures untracked (generated local state);
+  Reset-SamplePermissions.ps1 relocated to the repository root
+  and generates all fixtures from scratch.
+
 ## [0.2.1] - 2026-09-22
 
 ### Added

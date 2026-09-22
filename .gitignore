@@ -1,3 +1,5 @@
-# Windows reparse points cannot be committed. The Reset script recreates them.
-samples/app-link/
-samples/file-link.txt
+# samples/ fixtures are generated local state; Reset-SamplePermissions.ps1
+# at the root recreates everything (files, ACLs, links) from scratch.
+samples/
+
+PERMISSION-CODES.md

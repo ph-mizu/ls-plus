@@ -1,1 +1,0 @@
-Hidden attribute sample. Visible only with -a. Setup script sets the Hidden flag.

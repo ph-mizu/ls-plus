@@ -14,18 +14,45 @@ Remove-Item Alias:\ls -Force
 Import-Module .\ls-plus.psd1
 ```
 
+To make this permanent, put both lines in your `$PROFILE`
+with the absolute module path, e.g.
+`C:\Users\<you>\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`:
+
+```powershell
+Remove-Item Alias:\ls -Force
+Import-Module E:\ls-plus\ls-plus.psd1
+```
+
 ## Usage
 
 ```powershell
 ls [OPTIONS] [PATH...]
-ls -la
-ls -lh --time
-ls -R /path
-ls --acl file.txt
+```
+
+Output formats (default is wide multi-column):
+
+| Flags | Format |
+| ----- | ------ |
+| (none) | Wide listing, sorted down columns |
+| `-l`, `--long` | Long listing: permissions, size, time, name |
+| `-1`, `--one` | One item per line |
+| `--acl` | Raw Windows ACL rules per item |
+| `-h`, `--human-readable` | Human sizes with `-l` (`100B`, `2.9K`) |
+| `-F`, `--classify` | Append `/` `@` `*` type indicators |
+
+Sorting (`-t` time, `-S` size, `-n` name, `-r` reverse;
+time/size default newest/largest first):
+
+```powershell
+ls -la               # long + hidden files
+ls -lhSt             # human sizes, largest first, then by time
+ls -R C:\path        # recursive (never follows links)
+ls -d Docs           # list the directory itself, not its contents
+ls --acl file.txt    # inspect raw ACL rules
 ```
 
 Run `ls --help` for the full option list. Supported short
-options: `-aAlhtSR1dF`; long options: `--all`,
+options: `-aAlhtSRn1dF`; long options: `--all`,
 `--almost-all`, `--long`, `--human-readable`, `--time`,
 `--size`, `--name`, `--reverse`, `--recursive`, `--one`,
 `--directory`, `--classify`, `--acl`, `--help`.
@@ -46,26 +73,43 @@ Long format shows effective access for the current user as
 | o    | Take ownership                                 |
 | s    | Synchronize (without it no handle opens)       |
 
-Markers are attached without spaces in `^+!` order:
+Markers are attached without spaces in `+^!` order:
 
-| Marker | Meaning                                          |
-| ------ | ------------------------------------------------ |
-| ^      | Hidden or System attribute set                   |
-| +      | Rare rights effectively granted (`0x10`, `0x40`) |
-| !      | A non-inherited rule targets the current user    |
+| Marker | Meaning                                                      |
+| ------ | ------------------------------------------------------------ |
+| +      | Rights deviate from standard bundles (targeting Deny, incomplete bundle, `0x40`) |
+| ^      | Hidden or System attribute set                               |
+| !      | A non-inherited rule targets current user                    |
 
 Type indicators with `-F`: `/` directory, `@` link,
 `*` executable. Links show `name -> target` in long format.
 
 ## Samples
 
-`samples/` holds permission fixtures (deny, explicit grant,
-hidden, junction, sized file). Git cannot preserve Windows
-ACLs, so re-apply the demo state after cloning:
+A fresh clone contains no `samples/` directory: fixtures are
+generated local state, never committed. Expand them with:
 
 ```powershell
-.\samples\Reset-SamplePermissions.ps1
+.\Reset-SamplePermissions.ps1
 ```
+
+The script creates every fixture from scratch and applies the
+Windows ACLs, attribute flags, and links that git cannot
+preserve. Re-run it any time to repair demo state. Note:
+symlink creation needs admin or Developer Mode and is skipped
+with a warning otherwise.
+
+| Fixture | Purpose | Expected markers |
+| ------- | ------- | ---------------- |
+| `full.txt` | Full-access baseline | none |
+| `granted.txt` | Explicit grant for current user | `!` |
+| `hidden-note.txt` | Hidden flag, visible only with `-a` | `^` |
+| `locked/` + `secret.txt` | Deny-listed directory; list/open errors | `+!`, entry unreadable |
+| `readonly-attr.txt` | ReadOnly attribute: readable, `w` dark | none (honest `-r-x`) |
+| `sized-3k.txt` | Human-readable size demo | `2.9K` with `-h` |
+| `sub/` + `inner.txt` | Normal subdirectory control group | none |
+| `tool.ps1` | Executable mark | `*` with `-F` |
+| `app-link` | Junction to `sub/` (`->` pointer, `-R` lists but never descends) | `l` type |
 
 ## Versioning
 
